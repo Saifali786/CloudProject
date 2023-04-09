@@ -6,9 +6,11 @@ import Button from "@mui/material/Button";
 export const SentimentAnalysis = () => {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
+  const [audioSrc, setAudioSrc] = useState("");
   const handleSubmit = (event) => {
-    setMessage("");
     event.preventDefault();
+    setMessage("");
+    setAudioSrc("");
     console.log("button pressed");
     console.log(input);
     handleText(input);
@@ -38,6 +40,7 @@ export const SentimentAnalysis = () => {
       const message = JSON.parse(data.body);
       console.log(message.message);
       setMessage(message.message);
+      setAudioSrc(`data:audio/mp3;base64,${data.audioStream}`);
     } else {
       console.log("Error Uploading data");
     }
@@ -94,6 +97,18 @@ export const SentimentAnalysis = () => {
               value={input}
               required
             />
+            <audio
+              style={{
+                alignSelf: "center",
+                position: "absolute",
+                top: "175%",
+                width: "30%",
+                right: "35%",
+                borderRadius: "5rem",
+              }}
+              src={audioSrc}
+              controls
+            />
 
             <Button
               style={{
@@ -109,6 +124,7 @@ export const SentimentAnalysis = () => {
             >
               Submit
             </Button>
+
             <div
               style={{
                 position: "absolute",
