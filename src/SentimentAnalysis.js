@@ -79,7 +79,7 @@ export const SentimentAnalysis = () => {
         <h1
           style={{ alignSelf: "center", position: "absolute", bottom: "69%" }}
         >
-          Sentiment Analysis
+          Sentiment Analyer
         </h1>
         <Box
           style={{ position: "relative", alignSelf: "center", width: "100%" }}
